@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Guía Interactiva de Futuro: Will y Going to</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial;
+      background-color: #f9f9f9;
+      color: #2c3e50;
+      margin: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 5px #ccc;
+    }
+    h1 { color: #2c3e50; }
+    .section {
+      display: inline-block;
+      width: 28%;
+      background: #fff;
+      margin: 15px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ddd;
+      vertical-align: top;
+    }
+    .tag {
+      background-color: #e0e0e0;
+      color: #333;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover { background-color: #2ecc71; }
+    .hidden { display: none; }
+    #game1, #game2, #game3, #game4, #game5 {
+      margin: 30px auto;
+      width: 80%;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    iframe {
+      margin-top: 15px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Guía Interactiva de Tiempos Futuros</h1>
+    <p>Aprende a usar <strong>Will</strong> y <strong>Going to</strong> con ejemplos y juegos.</p>
+  </header>
+
+  <!-- Explicación general con video -->
+  <div id="intro" style="width:80%;margin:auto;background:#fff;padding:20px;border-radius:10px;box-shadow:0 0 10px #ddd;">
+    <h2>Explicación sencilla</h2>
+    <p><strong>Will</strong> se usa para decisiones espontáneas, promesas o predicciones sin evidencia clara.</p>
+    <p><strong>Going to</strong> se usa para planes ya pensados o predicciones basadas en evidencia visible.</p>
+    <p>Ejemplo: “I think I <strong>will go</strong> to bed early.” (decisión espontánea)  
+    “Look at those clouds! It <strong>is going to rain</strong>.” (predicción con evidencia)</p>
+    <p>👉 Mira este video para más explicación:</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/5kqf2Q2tYcY" 
+      title="Will vs Going to Explanation" frameborder="0" allowfullscreen></iframe>
+  </div>
+
+  <!-- Juego 1: True or False -->
+  <div id="game1">
+    <h2>🎯 Juego 1: True or False</h2>
+    <p>"I will help you with your homework tomorrow." → Is this a promise?</p>
+    <button onclick="checkTF(true)">True</button>
+    <button onclick="checkTF(false)">False</button>
+    <p id="tfResult"></p>
+  </div>
+
+  <!-- Juego 2: Fill in the blank -->
+  <div id="game2">
+    <h2>🧩 Juego 2: Fill in the blank</h2>
+    <p>Write the correct form: <strong>will</strong> or <strong>going to</strong></p>
+    <p>1. I think it ______ snow tonight.</p>
+    <input id="ans1" type="text" placeholder="Your answer">
+    <button onclick="checkFill()">Check</button>
+    <p id="fillResult"></p>
+  </div>
+
+  <!-- Juego 3: Guess the Use -->
+  <div id="game3">
+    <h2>🕹️ Juego 3: Guess the Use</h2>
+    <p>Select if the sentence shows a <strong>spontaneous decision</strong> or a <strong>planned intention</strong>:</p>
+    <p>"We are going to visit London next summer."</p>
+    <button onclick="guessUse(this, 'plan')">Planned intention</button>
+    <button onclick="guessUse(this, 'decision')">Spontaneous decision</button>
+    <p id="useResult"></p>
+  </div>
+
+  <!-- Juego 4: Multiple Choice -->
+  <div id="game4">
+    <h2>📝 Juego 4: Multiple Choice</h2>
+    <p>"Look at that man! He ____ fall."</p>
+    <button onclick="checkMC('will')">will</button>
+    <button onclick="checkMC('going to')">going to</button>
+    <p id="mcResult"></p>
+  </div>
+
+  <!-- Juego 5: Match the Sentence -->
+  <div id="game5">
+    <h2>🔗 Juego 5: Match the Sentence</h2>
+    <p>"I think I will call her now."</p>
+    <button onclick="matchSentence('will')">Will</button>
+    <button onclick="matchSentence('going to')">Going to</button>
+    <p id="matchResult"></p>
+  </div>
+
+  <script>
+    function checkTF(choice) {
+      const tfResult = document.getElementById('tfResult');
+      if (choice) {
+        tfResult.textContent = '✅ Correct! "Will" here expresses a promise.';
+        tfResult.style.color = 'green';
+      } else {
+        tfResult.textContent = '❌ Incorrect. This is indeed a promise.';
+        tfResult.style.color = 'red';
+      }
+    }
+
+    function checkFill() {
+      const ans = document.getElementById('ans1').value.trim().toLowerCase();
+      const fillResult = document.getElementById('fillResult');
+      if (ans === 'will') {
+        fillResult.textContent = '✅ Correct: “Will” is used for predictions without evidence.';
+        fillResult.style.color = 'green';
+      } else {
+        fillResult.textContent = '❌ Try again. There is no visible evidence here.';
+        fillResult.style.color = 'red';
+      }
+    }
+
+    function guessUse(btn, choice) {
+      const useResult = document.getElementById('useResult');
+      if (choice === 'plan') {
+        useResult.textContent = '✅ Correct: “Going to” indicates a planned intention.';
+        useResult.style.color = 'green';
+      } else {
+        useResult.textContent = '❌ Wrong. This sentence shows a planned action.';
+        useResult.style.color = 'red';
+      }
+    }
+
+    function checkMC(answer) {
+      const mcResult = document.getElementById('mcResult');
+      if (answer === 'going to') {
+        mcResult.textContent = '✅ Correct: Evidence shows he is about to fall.';
+        mcResult.style.color = 'green';
+      } else {
+        mcResult.textContent = '❌ Incorrect. There is visible evidence, so use “going to”.';
+        mcResult.style.color = 'red';
+      }
+    }
+
+    function matchSentence(choice) {
+      const matchResult = document.getElementById('matchResult');
+      if (choice === 'will') {
+        matchResult.textContent = '✅ Correct: This is a spontaneous decision.';
+        matchResult.style.color = 'green';
+      } else {
+        matchResult.textContent = '❌ Incorrect. This is not a planned action.';
+        matchResult.style.color = 'red';
+      }
+    }
+  </script>
+</body>
+</html>
